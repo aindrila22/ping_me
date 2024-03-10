@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config/config');
+const checkRoute = require("./routes/check");
 
 
 
@@ -24,7 +25,7 @@ db.once('open', () => {
 });
 
 // Use routes
-//app.use('/user', userRoutes);
+app.use('/api/v1', checkRoute);
 
 
 
