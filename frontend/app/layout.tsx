@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Mulish } from "next/font/google";
+import AuthProvider  from "../components/Provider";
 
-const inter = Poppins({ subsets: ["latin"], weight:'400'})
+const mulish = Mulish({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,12 +12,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={mulish.className}>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }
